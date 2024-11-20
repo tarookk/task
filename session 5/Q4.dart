@@ -1,14 +1,46 @@
-void main () {
-  
-List<int>number=[1,2,3,4,5,6,7,8,9,10,11,12,131,41,51,61,7,18,19,20];
-print(number);
+//Create a class `BankAccount` with:
+//- Properties: `String accountHolder`, `double balance`.
+//- A constructor to initialize the properties.
+//- Methods:
+ //- `deposit(double amount)` to add to the balance.
+ //- `withdraw(double amount)` to subtract from the balance (ensure sufficient funds).
+ //- `getDetails()` to print the account holder's name and balance.
+//Create an instance, perform some transactions, and print the account details.
+//Goal: Learn OOP concepts like constructors, methods, and object manipulation.
 
-for(int number=0;number <=10;number++){ 
 
-print(number);
+void main(){
+BankAccount account=BankAccount('   AhmedTAREK', 500);
+account.depost(100);
+account.withdraw(100);
+account.getDetalis();
+}
 
+class BankAccount{
+String accountHolder;
+double balance;
+BankAccount(this.accountHolder,this.balance);
 
+void depost( double amount ){
+  if(amount>0){
+    balance +=amount;
+    print(balance);
+  }
+  else{print('');}
 
 
 }
+
+void withdraw(double amount){
+  if(amount>0){
+    balance -=amount;
+    print(balance);
+  }
+  else{print('');}
+}
+
+void getDetalis(){
+  print('named and balance$accountHolder,$balance');
+}
+
 }
