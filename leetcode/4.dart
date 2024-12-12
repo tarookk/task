@@ -1,31 +1,26 @@
-void main() {
-  List<int> prices = [7, 1, 5, 3, 6, 4];
-  print("Max profit: ${maxProfit(prices)}"); 
-}
-
-
-
-int maxProfit(List<int> prices) {
-  if (prices.isEmpty) return 0; 
-
-  int minPrice = prices[0]; 
-  int maxProfit = 0; 
-
-  for (int i = 1; i < prices.length; i++) {
-   
-    int profit = prices[i] - minPrice;
-    
+int lastStoneWeight(List<int> stones) {
  
-    if (profit > maxProfit) {
-      maxProfit = profit;
-    }
-    
+  stones.sort((a, b) => b.compareTo(a));
 
-    if (prices[i] < minPrice) {
-      minPrice = prices[i];
+  while (stones.length > 1) {
+    
+    int stone1 = stones.removeAt(0); 
+    int stone2 = stones.removeAt(0);
+
+    
+    if (stone1 != stone2) {
+      stones.add(stone1 - stone2);
+     
+      stones.sort((a, b) => b.compareTo(a));
     }
   }
 
-  return maxProfit;
+  
+  return stones.isNotEmpty ? stones[0] : 0;
 }
 
+void main() {
+
+  List<int> stones = [2, 7, 4, 1, 8, 1];
+  print(lastStoneWeight(stones));
+}
